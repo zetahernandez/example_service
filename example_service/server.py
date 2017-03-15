@@ -22,7 +22,7 @@ class Server(BaseServer):
 
     # The service name is required, and is what the transport classes will use
     # (if necessary) to know what named requests they should pick up.
-    service_name = 'tag'
+    service_name = 'example'
 
     # This maps action names (keys) to action class objects (values). You are
     # required to have a "healthcheck" action at a minimum; see the
