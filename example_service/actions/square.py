@@ -18,6 +18,10 @@ class SquareAction(Action):
         'number': fields.Float(),
     })
 
+    response_schema = fields.Dictionary({
+        'square': fields.Float(),
+    })
+
     def run(self, request):
         """
         When an action is run, the request is validated, and then passed to you
@@ -26,6 +30,6 @@ class SquareAction(Action):
         # Request body is a dictionary, so it's easy to pull out fields.
         square = request.body['number'] ** 2
         # Return the result
-        return ActionResponse(body={
+        return {
             "square": square,
-        })
+        }

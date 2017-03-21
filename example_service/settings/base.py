@@ -12,5 +12,6 @@ settings = {
         "path": "ebsoa.serializer.msgpack_serializer:MsgpackSerializer",
     },
     "middleware": [
+        ("ebsoa.server.middleware.auth:AuthMiddleware", {})
     ],
 }

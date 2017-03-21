@@ -3,7 +3,7 @@ from ebsoa.server import Server as BaseServer
 # Import each action explicitly; don't use "import *". Try to keep each action
 # in its own Python module or in small modules with related actions;
 # don't just have one big actions.py file.
-from .actions.healthcheck import HealthcheckAction
+from .actions.healthcheck import ExampleHealthcheckAction
 from .actions.square import SquareAction
 
 
@@ -30,7 +30,7 @@ class Server(BaseServer):
     # Everything else is up to you; try to keep names short but explicit, and
     # don't end them in redundant terms like "echo_action"
     action_class_map = {
-        'healthcheck': HealthcheckAction,
+        'healthcheck': ExampleHealthcheckAction,
         'square': SquareAction,
     }
 
