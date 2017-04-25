@@ -2,7 +2,7 @@
 # the dict in the other file too, settings files are only loaded if they are
 # used, so it's fine.
 from __future__ import unicode_literals
-from ebsoa.transport.asgi.constants import ASGI_CHANNEL_TYPE_REDIS
+from pysoa.common.transport.asgi.constants import ASGI_CHANNEL_TYPE_REDIS
 from .base import settings
 
 

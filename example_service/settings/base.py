@@ -5,13 +5,15 @@ from __future__ import unicode_literals
 
 settings = {
     "transport": {
-        "path": "ebsoa.transport.asgi.server:ASGIServerTransport",
+        "path": "pysoa.common.transport.asgi.server:ASGIServerTransport",
         # kwargs will need overriding in a concrete settings file
     },
     "serializer": {
-        "path": "ebsoa.serializer.msgpack_serializer:MsgpackSerializer",
+        "path": "pysoa.common.serializer.msgpack_serializer:MsgpackSerializer",
     },
     "middleware": [
-        ("ebsoa.server.middleware.auth:AuthMiddleware", {})
+        {
+            "path": "ebsoa.server.middleware.auth:AuthMiddleware",
+        },
     ],
 }

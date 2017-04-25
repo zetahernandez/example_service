@@ -1,6 +1,5 @@
 from conformity import fields
 from pysoa.server.action import Action
-from pysoa.server.types import ActionResponse
 
 
 class SquareAction(Action):
