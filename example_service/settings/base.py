@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 settings = {
     "transport": {
         "path": "pysoa.common.transport.asgi.server:ASGIServerTransport",
-        # kwargs will need overriding in a concrete settings file
+        # kwargs will need overriding in a concrete settings file, like dev.py
     },
     "serializer": {
         "path": "pysoa.common.serializer.msgpack_serializer:MsgpackSerializer",

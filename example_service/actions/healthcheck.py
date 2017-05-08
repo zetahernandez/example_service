@@ -2,12 +2,12 @@
 # new code anyway to make things easier, and more like Python 3.
 from __future__ import unicode_literals
 
-from ebsoa.server.actions import HealthcheckAction
+from ebsoa.server.actions import BaseStatusAction
 
 
-class ExampleHealthcheckAction(HealthcheckAction):
+class StatusAction(BaseStatusAction):
     """
-    A Healthcheck action is something every service must have, and it reports
+    A status/healthcheck action is something every service must have, and it reports
     on the health of the service and its connectivity. It takes no arguments,
     and returns a response containing zero or more "errors" and "warnings".
     Zero errors and warnings means that the service is healthy; one or more

@@ -7,7 +7,7 @@ from example_service import __version__
 # branch. For example, "conformity~=1.2" allows anything up to but not
 # including 1.3.
 install_requires = [
-    'ebsoa~=0.1.dev2',
+    'ebsoa~=0.9',
     'conformity~=1.2',
 ]
 
