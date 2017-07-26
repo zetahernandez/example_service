@@ -5,22 +5,57 @@ This is meant to serve as an example of how to best write a service and handle
 a variety of different patterns. All code is thoroughly commented, and suitable
 for copying to base a new service on.
 
-Any service you make should have a README like this that says what the service
-does, who maintains it, and what external dependencies (e.g. "core mysql database",
-"kafka", "core cassandra") that service has so that Ops can know what to allow
-it to access.
+Any service you make should have a README like this that briefly describes what's
+included in the service and how to work with it. More detailed documentation for
+the service should be in the ``docs/`` directory, which must contain at least
+``index.rst``. See https://docs.evbhome.com/repos/docs-in-repos.html for more info.
+
+
+Things to include in the README
+-------------------------------
+
+Purpose
++++++++
+
+* What is this service in charge of and what questions does it answer?
 
 
 Maintainer
-----------
+++++++++++
 
-The example service is maintained by the Foundry team.
+* Which team maintains this service?
 
 
 Dependencies
-------------
+++++++++++++
 
-The example service has no external dependencies.
+* What external dependencies does this service have? One possible audience for this
+  is Ops, but this is also important for future maintainers and developers.
+  Examples might be "core MySQL database", "Kafka", or "core Cassandra"
+
+
+Developing for this service locally (Getting Started)
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+* General guidelines for working on the service
+* Is there a specific core container to use?
+* Is there a recommended profile?
+* Any gotchas, common errors, or pitfalls?
+
+
+How to Run Tests for this Service
++++++++++++++++++++++++++++++++++
+
+* Running all tests
+* Running a specific test
+
+
+Release and Versioning
++++++++++++++++++++++++++++++++++++
+
+* Instructions on releasing this service standalone
+* Instructions on managing service as a library to install in core
+* Additional deployment steps if this service is remote
 
 
 Folder Layout
@@ -35,6 +70,9 @@ like this::
     example_service/
         __init__.py
         server.py
+        ...
+    docs/
+        index.rst
         ...
     tests/
         ...
