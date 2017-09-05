@@ -12,8 +12,8 @@ settings = {
         "path": "pysoa.common.serializer.msgpack_serializer:MsgpackSerializer",
     },
     "middleware": [
-        {
-            "path": "ebsoa.server.middleware.auth:AuthMiddleware",
-        },
+        # {
+        #     "path": "ebsoa.server.middleware.auth:AuthMiddleware",
+        # },
     ],
 }
