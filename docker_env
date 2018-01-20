@@ -1,0 +1,53 @@
+#!/bin/bash
+
+BASEDIR="$( cd "$(dirname "docker_env")" ; pwd -P )"
+
+if [[ "$1" == "stop" ]]; then
+    docker stop example_service_client
+    docker stop example_service
+    docker stop pysoa-redis
+    exit 0
+elif [[ "$1" == "build" ]]; then
+    docker build -f $BASEDIR/Dockerfile -t example_service $BASEDIR
+    docker build -f $BASEDIR/example_client/Dockerfile -t example_service_client $BASEDIR/example_client
+    exit 0
+fi
+
+if [[ "$(docker ps -a|grep pysoa-redis)" ]]; then
+    # The container already exists
+    if [[ ! "$(docker ps|grep pysoa-redis)" ]]; then
+        # The container is not already running
+        echo "Starting Redis..."
+        docker start "pysoa-redis"
+    else
+        echo "Redis already running..."
+    fi
+else
+    echo "Creating and starting Redis..."
+    docker run --name pysoa-redis -d "redis:4"
+fi
+
+if [[ "$(docker ps|grep example_service)" ]]; then
+    echo "Stopping already-running Example Service..."
+    docker stop example_service
+fi
+
+if [[ "$(docker ps -a|grep example_service)" ]]; then
+    docker rm example_service
+fi
+
+echo "Starting Example Service..."
+if [[ "$1" == "shell" ]]; then
+    docker run -it --name example_service --link pysoa-redis:redis --mount type=bind,source="$BASEDIR",destination=/srv/example_service --entrypoint=/bin/bash example_service
+else
+    docker run -d --name example_service --link pysoa-redis:redis --mount type=bind,source="$BASEDIR",destination=/srv/example_service example_service
+fi
+
+if [[ "$1" == "client" ]]; then
+    if [[ "$(docker ps -a|grep example_service_client)" ]]; then
+        docker rm example_service_client
+    fi
+
+    echo "Starting Example Service client test container..."
+    docker run -it --name example_service_client --link pysoa-redis:redis --mount type=bind,source="$BASEDIR/example_client",destination=/srv/example_client --entrypoint=/bin/bash example_service_client
+fi

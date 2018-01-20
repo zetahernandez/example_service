@@ -11,3 +11,7 @@ __pycache__
 .coverage
 coverage.xml
 pytests.xml
+.git
+.gitignore
+docs
+README.rst

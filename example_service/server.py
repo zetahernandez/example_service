@@ -1,14 +1,13 @@
-from ebsoa.server import Server as BaseServer
+from pysoa import server
 
-# Import each action explicitly; don't use "import *". Try to keep each action
-# in its own Python module or in small modules with related actions;
-# don't just have one big actions.py file.
-from .actions.healthcheck import StatusAction
-from .actions.square import SquareAction
-from .actions.callservice import CallServiceAction
+# Import each action explicitly; don't use "import *". Try to keep each action in its own Python module or in small
+# modules with related actions; don't just have one big actions.py file.
+from example_service.actions.call_service import CallServiceAction
+from example_service.actions.square import SquareAction
+from example_service.actions.status import StatusAction
 
 
-class Server(BaseServer):
+class Server(server.Server):
     """
     The main server class for this service.
 
@@ -31,7 +30,7 @@ class Server(BaseServer):
     # Everything else is up to you; try to keep names short but explicit, and
     # don't end them in redundant terms like "echo_action"
     action_class_map = {
-        'healthcheck': StatusAction,
+        'status': StatusAction,
         'call_service': CallServiceAction,
         'square': SquareAction,
     }
