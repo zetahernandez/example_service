@@ -22,8 +22,11 @@ tests_require = [
 
 setup(
     name='example_service',
-    description='A short one-line service description goes here.',
     version=__version__,
+    description='A short one-line service description goes here.',
+    author='Eventbrite, Inc.',
+    author_email='opensource@eventbrite.com',
+    url='https://github.com/eventbrite/example_service',
     packages=find_packages(),
     install_requires=install_requires,
     tests_require=tests_require,
@@ -37,6 +40,20 @@ setup(
     entry_points={
         'console_scripts': [
             'example_service=example_service.standalone:main',
-        ]
+        ],
     },
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: Apache Software License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Topic :: Software Development',
+    ],
 )
