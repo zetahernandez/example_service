@@ -7,7 +7,7 @@ SOA_SERVER_SETTINGS = {
     },
     'middleware': [
         # {
-        #     'path': 'ebsoa.server.middleware.auth:AuthMiddleware',
+        #     'path': 'acme_soa_extensions.server.middleware.auth:AuthMiddleware',
         # },
     ],
 }

@@ -6,11 +6,17 @@ from setuptools import (
 from example_service import __version__
 
 
+def readme():
+    with open('README.rst') as f:
+        return f.read()
+
+
 # Put your requirements for installation here. Try to use the ~= operator where possible for dependencies, which will
-# allow bug fix releases in that branch. For example, "conformity~=1.6" allows anything up to but not including 2.0.
+# allow bug fix releases in that branch. For example, "conformity~=1.12" allows anything up to but not including 2.0,
+# while "pysoa~=0.38.1" allows anything up to but not including 0.39.0.
 install_requires = [
-    'pysoa~=0.26.1',
-    'conformity~=1.7',
+    'pysoa~=0.38.1',
+    'conformity~=1.12',
 ]
 
 # Extra requirements that are needed for running tests but NOT for running in production should go here.
@@ -23,14 +29,17 @@ tests_require = [
 setup(
     name='example_service',
     version=__version__,
-    description='A short one-line service description goes here.',
     author='Eventbrite, Inc.',
     author_email='opensource@eventbrite.com',
+    description='A short one-line service description goes here.',
+    long_description=readme(),
     url='https://github.com/eventbrite/example_service',
-    packages=find_packages(),
+    packages=find_packages(exclude=['*.tests', '*.tests.*', 'tests.*', 'tests']),
+    include_package_data=True,
     install_requires=install_requires,
     tests_require=tests_require,
     setup_requires=['pytest-runner'],
+    test_suite='tests',
     extras_require={
         'testing': tests_require,
     },

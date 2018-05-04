@@ -29,7 +29,7 @@ container as follows::
 
     $ ./docker_env shell
 
-Once inside, you can run tests or run the service (the third command is a shortcut for the second command):
+Once inside, you can run tests or run the service (the third command is a shortcut for the second command)::
 
     # pytest
     # python3 -m example_service.standalone -s example_service.settings.dev

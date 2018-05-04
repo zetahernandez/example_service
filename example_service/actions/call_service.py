@@ -4,8 +4,8 @@ from pysoa.server.action import Action
 
 class CallServiceAction(Action):
     """
-    This is an example of a simple action which chains down to call another service;
-    in this case, ourselves.
+    This is an example of a simple action which chains down to call another service; in this case, ourselves, which
+    is unusual, but it's an easier example than creating another service.
     """
 
     response_schema = fields.Dictionary({
