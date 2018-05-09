@@ -30,4 +30,4 @@ ADD . /srv/example_service/
 RUN pip3 install -e /srv/example_service[testing]
 
 ENTRYPOINT ["python3", "-m", "example_service.standalone"]
-CMD ["-s", "example_service.settings.dev"]
+CMD ["-s", "example_service.settings.dev", "-f", "5", "--use-file-watcher", "example_service,pysoa,conformity"]

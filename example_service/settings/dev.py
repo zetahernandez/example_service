@@ -6,6 +6,7 @@ from pysoa.common.transport.redis_gateway.constants import REDIS_BACKEND_TYPE_ST
 
 from example_service.settings.base import SOA_SERVER_SETTINGS
 
+
 SOA_SERVER_SETTINGS['transport']['kwargs'] = {
     'backend_type': REDIS_BACKEND_TYPE_STANDARD,
     'backend_layer_kwargs': {
