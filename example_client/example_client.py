@@ -17,14 +17,10 @@ if __name__ == '__main__':
     client = Client({
         'example': {
             'transport': {
-                'path': 'pysoa.common.transport.redis_gateway.client:RedisClientTransport',
+                'path': 'pysoa.common.transport.http2.client:Http2ClientTransport',
                 'kwargs': {
-                    'backend_type': REDIS_BACKEND_TYPE_STANDARD,
-                    'backend_layer_kwargs': {
-                        'hosts': [
-                            (os.environ['REDIS_PORT_6379_TCP_ADDR'], int(os.environ['REDIS_PORT_6379_TCP_PORT'])),
-                        ],
-                    },
+                    'http_host': '127.0.0.1',
+                    'http_port': '8080',
                 },
             }
         }

@@ -2,8 +2,7 @@
 # settings, or in Django format if you are using Django.
 SOA_SERVER_SETTINGS = {
     'transport': {
-        'path': 'pysoa.common.transport.redis_gateway.server:RedisServerTransport',
-        # kwargs will need overriding in a concrete settings file, like dev.py
+        'path': 'pysoa.common.transport.http2.server:Http2ServerTransport',
     },
     'middleware': [
         # {
