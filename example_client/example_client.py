@@ -3,6 +3,7 @@
 import json
 import os
 import sys
+import concurrent
 
 import attr
 from pysoa.client import Client
@@ -43,6 +44,16 @@ if __name__ == '__main__':
     print(json.dumps(body, indent=4, sort_keys=True))
     print()
 
-    response = client.call_action('example', action, body=body)
-    print('Response:')
-    print(json.dumps(attr.asdict(response), indent=4, sort_keys=True))
+    def run_client():
+        response = client.call_action('example', action, body=body)
+        print('Response:')
+        print(json.dumps(attr.asdict(response), indent=4, sort_keys=True))
+
+    import multiprocessing as mp
+
+    # Step 1: Init multiprocessing.Pool()
+    pool = mp.Pool(mp.cpu_count())
+
+    results = [pool.apply(run_client) for _ in range(100)]
+
+    pool.close()
