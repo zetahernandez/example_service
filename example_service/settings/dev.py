@@ -8,8 +8,10 @@ from example_service.settings.base import SOA_SERVER_SETTINGS
 
 
 SOA_SERVER_SETTINGS['transport']['kwargs'] = {
-    'http_host': '127.0.0.1',
-    'http_port': '8080',
+    'backed_layer_kwargs': {
+        'http_host': '127.0.0.1',
+        'http_port': '8080',
+    }
 }
 
 # Services don't actually know how to talk to anything else - even themselves - so we have to set the client routing to

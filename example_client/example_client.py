@@ -20,8 +20,10 @@ if __name__ == '__main__':
             'transport': {
                 'path': 'pysoa.common.transport.http2.client:Http2ClientTransport',
                 'kwargs': {
-                    'http_host': '127.0.0.1',
-                    'http_port': '8080',
+                    'backed_layer_kwargs': {
+                        'http_host': '127.0.0.1',
+                        'http_port': '8080',
+                    }
                 },
             }
         }
@@ -49,11 +51,27 @@ if __name__ == '__main__':
         print('Response:')
         print(json.dumps(attr.asdict(response), indent=4, sort_keys=True))
 
+    def run_parallel():
+        action_responses = client.call_actions_parallel('example', [
+            {'action': 'square', 'body': {'number': 1}},
+            {'action': 'square', 'body': {'number': 2}},
+            {'action': 'square', 'body': {'number': 3}},
+            {'action': 'square', 'body': {'number': 4}},
+            {'action': 'square', 'body': {'number': 5}},
+            {'action': 'square', 'body': {'number': 6}},
+            {'action': 'square', 'body': {'number': 7}},
+            {'action': 'square', 'body': {'number': 8}},
+            {'action': 'square', 'body': {'number': 9}},
+        ])
+        print(list(action_responses))
+
     import multiprocessing as mp
 
     # Step 1: Init multiprocessing.Pool()
     pool = mp.Pool(mp.cpu_count())
 
-    results = [pool.apply(run_client) for _ in range(100)]
+    results = [pool.apply(run_parallel) for _ in range(1000)]
 
     pool.close()
+    run_client()
+    run_parallel()

@@ -1,4 +1,4 @@
-from pysoa import server
+from pysoa.server import server
 
 # Import each action explicitly; don't use "import *". Try to keep each action in its own Python module or in small
 # modules with related actions; don't just have one big actions.py file.
